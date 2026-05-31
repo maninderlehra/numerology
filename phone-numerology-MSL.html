@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phone Numerology - Maninderjit Singh</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --burg:#390517;
+  --tan:#A38560;
+  --tanl:#C4A070;
+  --forest:#16302B;
+  --dark:#03110D;
+  --offwhite:#E0E0E0;
+  --cream:#1C1C1C;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Lato',sans-serif;background:#111008;color:#E0E0E0;min-height:100vh;}
+
+/* HEADER */
+.hdr{background:#03110D;padding:36px 20px 26px;text-align:center;border-bottom:2px solid #A38560;}
+.hdr-eye{font-size:10px;letter-spacing:0.45em;text-transform:uppercase;color:#A38560;margin-bottom:14px;font-weight:700;}
+.hdr h1{font-family:'Playfair Display',serif;font-size:30px;font-weight:900;color:#E0E0E0;letter-spacing:0.04em;margin-bottom:8px;line-height:1.2;}
+.hdr-tag{font-size:12px;color:#6A8A7A;letter-spacing:0.06em;margin-bottom:18px;}
+.hdr-div{width:48px;height:1px;background:#A38560;margin:0 auto 16px;}
+.hdr-cr{font-size:10px;color:#7A6040;letter-spacing:0.18em;text-transform:uppercase;}
+.hdr-cr b{color:#C4A070;}
+
+/* WRAP */
+.wrap{max-width:660px;margin:0 auto;padding:24px 14px 60px;}
+
+/* INPUT CARD */
+.icard{background:#0C1A0E;border:1px solid #2A4A30;border-top:2px solid #A38560;border-radius:0 0 10px 10px;padding:22px;margin-bottom:18px;}
+.ilbl{display:block;font-size:10px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#A38560;margin-bottom:10px;}
+.irow{display:flex;gap:10px;flex-wrap:wrap;}
+.irow input{flex:1;min-width:160px;padding:13px 14px;font-size:18px;letter-spacing:0.14em;border:1px solid #2A4A30;border-radius:6px;outline:none;font-family:monospace;background:#060E08;color:#E0E0E0;}
+.irow input:focus{border-color:#A38560;}
+.irow input::placeholder{color:#3A5A40;}
+.abtn{padding:13px 26px;background:#390517;color:#E0E0E0;border:1px solid #6A1030;border-radius:6px;font-size:13px;cursor:pointer;font-weight:700;font-family:'Lato',sans-serif;letter-spacing:0.12em;text-transform:uppercase;}
+.abtn:active{background:#16302B;}
+.hint{font-size:12px;color:#4A6A50;margin-top:8px;}
+.emsg{color:#C06060;font-size:13px;margin-top:6px;font-weight:700;min-height:16px;}
+
+/* RESULT */
+#res{display:none;}
+
+/* BANNER */
+.banner{display:flex;align-items:center;gap:18px;background:#0C1A0E;border:1px solid #2A4A30;border-radius:10px;padding:20px 22px;margin-bottom:12px;flex-wrap:wrap;}
+.bnum{font-family:'Playfair Display',serif;font-size:60px;font-weight:900;line-height:1;min-width:66px;}
+.binfo{flex:1;min-width:170px;}
+.bname{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:3px;color:#E0E0E0;}
+.bplan{font-size:13px;color:#7A9A7A;margin-bottom:11px;}
+.srow{display:flex;align-items:center;gap:10px;}
+.sbg{flex:1;height:8px;background:#1A2E1A;border-radius:4px;overflow:hidden;min-width:70px;}
+.sfill{height:100%;border-radius:4px;transition:width 0.5s;}
+.stxt{font-size:14px;font-weight:800;min-width:42px;}
+.bdg{display:inline-block;padding:3px 11px;border-radius:4px;font-size:11px;font-weight:700;letter-spacing:0.06em;}
+.dnote{font-size:12px;color:#C07050;margin-top:6px;font-weight:600;}
+
+/* PILLS */
+.pills{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;}
+.pill{padding:4px 12px;border-radius:4px;font-size:12px;font-weight:700;}
+.pb{background:#390517;color:#F0A0A0;border:1px solid #6A1030;}
+.pw{background:#3A2A00;color:#E0C060;border:1px solid #6A5010;}
+.pg{background:#0A2A14;color:#60C080;border:1px solid #1A5A30;}
+
+/* CALC */
+.calc{background:#060E08;border-radius:6px;padding:10px 14px;font-size:13px;color:#7AAA7A;margin-bottom:18px;font-family:monospace;word-break:break-all;line-height:1.7;border-left:3px solid #A38560;}
+
+/* SECTION LABEL */
+.sec{font-size:10px;font-weight:700;color:#A38560;text-transform:uppercase;letter-spacing:0.25em;margin:26px 0 10px;display:flex;align-items:center;gap:10px;}
+.sec::after{content:'';flex:1;height:1px;background:#1E3A22;}
+
+/* DIGIT MAP */
+.dstrip{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:10px;}
+.dw{position:relative;margin-bottom:24px;}
+.dc{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;}
+.dwn{position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);font-size:9px;color:#C06060;white-space:nowrap;font-weight:700;}
+.leg{display:flex;gap:12px;font-size:11px;color:#4A6A50;flex-wrap:wrap;margin-bottom:6px;}
+.ld{display:inline-block;width:10px;height:10px;border-radius:50%;vertical-align:middle;margin-right:3px;}
+
+/* CARDS */
+.card{border-radius:8px;padding:14px 15px;margin-bottom:9px;}
+.cg{background:#071510;border:1px solid #1A4A28;border-left:3px solid #28A060;}
+.cw{background:#140E00;border:1px solid #3A2A00;border-left:3px solid #A07800;}
+.cb{background:#140206;border:1px solid #4A1020;border-left:3px solid #A02040;}
+.cch{background:#0C1A0E;border:1px solid #2A4A30;border-left:3px solid #A38560;}
+.chdr{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;gap:8px;flex-wrap:wrap;}
+.crow{display:flex;align-items:center;gap:7px;flex:1;flex-wrap:wrap;}
+.ctit{font-size:14px;font-weight:700;font-family:'Playfair Display',serif;color:#E0E0E0;}
+.tag{padding:2px 7px;border-radius:3px;font-size:10px;font-weight:700;white-space:nowrap;letter-spacing:0.06em;}
+.tR{background:#0A1A40;color:#7090E0;}
+.tC{background:#2A0510;color:#E07080;}
+.tP{background:#2A1500;color:#D09050;}
+.tZ{background:#1A1A1A;color:#888;}
+.tRe{background:#1A0A30;color:#C080E0;}
+.cbdg{display:flex;gap:5px;align-items:center;flex-shrink:0;}
+.sn{font-size:11px;font-weight:700;color:#C06060;}
+.bgg{background:#0A2A14;color:#60C080;border:1px solid #1A5A30;}
+.bgw{background:#3A2A00;color:#E0C060;border:1px solid #6A5010;}
+.bgb{background:#390517;color:#F0A0A0;border:1px solid #6A1030;}
+.bgi{background:#001A30;color:#60A0E0;border:1px solid #104060;}
+.bga{background:#3A2A00;color:#E0C060;border:1px solid #6A5010;}
+.cbod{font-size:13px;color:#9AB89A;line-height:1.65;margin-top:4px;}
+.cfix{font-size:12px;color:#A38560;background:#060E08;border-radius:4px;padding:6px 10px;margin-top:7px;border-left:2px solid #A38560;}
+
+/* EFFECTS */
+.egrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:9px;margin-bottom:22px;}
+.ec{background:#0C1A0E;border:1px solid #2A4A30;border-top:2px solid #A38560;border-radius:8px;padding:14px 13px;}
+.eico{font-size:20px;margin-bottom:6px;}
+.eimp{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:3px;margin-bottom:5px;letter-spacing:0.05em;}
+.eig{background:#0A2A14;color:#60C080;border:1px solid #1A5A30;}
+.eiw{background:#3A2A00;color:#E0C060;border:1px solid #6A5010;}
+.eib{background:#390517;color:#F0A0A0;border:1px solid #6A1030;}
+.elbl{font-size:13px;font-weight:700;margin-bottom:4px;font-family:'Playfair Display',serif;color:#C4A070;}
+.ebod{font-size:12px;color:#8AAA8A;line-height:1.5;}
+
+.noiss{background:#071510;border:1px solid #1A4A28;border-left:3px solid #28A060;border-radius:8px;padding:13px 15px;font-size:13px;color:#60C080;font-weight:600;}
+
+/* FOOTER */
+.ftr{text-align:center;padding:24px 14px 14px;font-size:10px;color:#3A5A40;letter-spacing:0.12em;text-transform:uppercase;border-top:1px solid #1A3A1E;margin-top:36px;line-height:2.4;}
+.ftr b{color:#A38560;}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="hdr-eye">* Numerology Tools *</div>
+  <h1>Phone Number<br>Numerology Analyser</h1>
+  <div class="hdr-tag">Root Number - Bad Combo Detection - Dynamic Scoring - Life Effects</div>
+  <div class="hdr-div"></div>
+  <div class="hdr-cr">Created by <b>Maninderjit Singh</b> &nbsp; All Rights Reserved &nbsp; &copy; 2026</div>
+</div>
+
+<div class="wrap">
+  <div class="icard">
+    <span class="ilbl">Enter Your Phone Number</span>
+    <div class="irow">
+      <input type="tel" id="pIn" placeholder="e.g. 9876543210" maxlength="15">
+      <button class="abtn" id="abtn">Analyse</button>
+    </div>
+    <p class="hint">Digits only - no spaces, no +91 prefix</p>
+    <div class="emsg" id="emsg"></div>
+  </div>
+
+  <div id="res">
+    <div class="banner">
+      <div class="bnum" id="rNum">0</div>
+      <div class="binfo">
+        <div class="bname" id="rName"></div>
+        <div class="bplan" id="rPlan"></div>
+        <div class="srow">
+          <div class="sbg"><div class="sfill" id="rBar" style="width:0%"></div></div>
+          <span class="stxt" id="rStxt"></span>
+          <span class="bdg" id="rVerd"></span>
+        </div>
+        <div class="dnote" id="rDnote"></div>
+      </div>
+    </div>
+    <div class="pills" id="rPills"></div>
+    <div class="calc" id="rCalc"></div>
+    <div class="sec">Digit Map</div>
+    <div class="dstrip" id="rDigs"></div>
+    <div class="leg">
+      <span><span class="ld" style="background:#D0ECD8;border:1px solid #28A745"></span>Strong</span>
+      <span><span class="ld" style="background:#F5ECC8;border:1px solid #C0A000"></span>Neutral</span>
+      <span><span class="ld" style="background:#F5D8D8;border:1px solid #A02020"></span>Weak or bad combo</span>
+      <span><span class="ld" style="background:#EEE;border:1px solid #CCC"></span>Zero</span>
+    </div>
+    <div class="sec">Full Analysis</div>
+    <div id="rCards"></div>
+    <div class="sec">Effect on You</div>
+    <div class="egrid" id="rEffs"></div>
+    <div class="sec">What to Change</div>
+    <div id="rChng"></div>
+  </div>
+
+  <div class="ftr">
+    Phone Number Numerology Analyser<br>
+    Created and Designed by <b>Maninderjit Singh</b><br>
+    &copy; 2026 All Rights Reserved - Unauthorised Reproduction Prohibited
+  </div>
+</div>
+
+<script>
+var ND = {
+  1: {n:"The Leader", p:"Sun", e:"Power, authority, new beginnings", bs:9, c:"#8B6500",
+    ef:{
+      career:{b:"Leadership opportunities rise. Sun energy commands recognition and authority.",bad:"Bad combos in this number may create unexpected disruptions that undercut your authority.",warn:"Minor turbulence possible but results will come."},
+      finance:{b:"Money flows toward you. Excellent for business dealings.",bad:"Financial gains may arrive erratically due to Rahu or Saturn disruptions in this number.",warn:"Generally good flow but watch for occasional blocks."},
+      relationships:{b:"Commands respect in every interaction. People take you seriously.",bad:"Bad combos create misunderstandings and strained relationships.",warn:"Mostly strong but some friction with authority figures."},
+      health:{b:"High solar energy. Vitality and drive are your strengths.",bad:"Stress from instability caused by bad combos may lead to anxiety or burnout.",warn:"Guard against overexertion and pace yourself."},
+      overall:{b:"Solar energy. Doors open and people respond positively to you.",bad:"Positive Sun root is significantly weakened by bad combos. This number will frustrate more than it helps.",warn:"Decent overall but not as powerful as a clean Sun number should be."}
+    }, fix:null},
+  2: {n:"The Intuitive", p:"Moon", e:"Emotions, creativity, sensitivity", bs:5, c:"#4A6080",
+    ef:{
+      career:{b:"Best suited to creative, nurturing or artistic fields.",bad:"Bad combos amplify Moon instability. Career confusion and frequent setbacks are likely.",warn:"Progress is slow and inconsistent. Patience needed."},
+      finance:{b:"Fluctuating income that follows lunar cycles.",bad:"Financial chaos likely. Bad combos make the Moon energy volatile.",warn:"Income comes and goes. Budget carefully."},
+      relationships:{b:"Warm, empathetic energy that draws people in emotionally.",bad:"Emotional instability from bad combos creates misunderstandings and overload.",warn:"Relationships are sincere but can be overly emotional."},
+      health:{b:"Mood and energy follow lunar cycles. Rest and routine are essential.",bad:"Anxiety and emotional stress heightened by bad combos. Mental health needs attention.",warn:"Mood swings and fatigue. Prioritise sleep and calm."},
+      overall:{b:"Gentle, sensitive energy. Good for personal use, cautious for business.",bad:"Bad combos make this number unstable for any purpose. Not recommended.",warn:"Manageable but not ideal. Consider a stronger number."}
+    }, fix:"Pair with a strong 1 or 3 in last 4 digits for business use."},
+  3: {n:"The Fortunate", p:"Jupiter", e:"Luck, abundance, wisdom, growth", bs:10, c:"#16302B",
+    ef:{
+      career:{b:"Promotions, recognition, and new opportunities multiply under Jupiter.",bad:"Bad combos put a ceiling on Jupiter expansion. Opportunities arise but collapse unexpectedly.",warn:"Strong career energy with some minor delays. Still one of the best numbers."},
+      finance:{b:"Jupiter blessing brings wealth, expansion, and financial abundance.",bad:"Financial gains are present but disrupted. Bad combos create unexpected losses.",warn:"Good financial energy overall. Minor fluctuations only."},
+      relationships:{b:"Warm, generous energy that makes you genuinely trusted and liked.",bad:"Bad combos introduce conflict into otherwise good relationships.",warn:"Mostly harmonious. Occasional friction but nothing lasting."},
+      health:{b:"Excellent vitality and an optimistic outlook on life.",bad:"Stress from bad combo disruptions may affect physical and mental health.",warn:"Good health energy. Stay balanced and avoid excess."},
+      overall:{b:"Best root number. Universally auspicious and expansive.",bad:"Even Jupiter power is compromised by severe bad combos. The number loses much of its magic.",warn:"Still a strong number. Jupiter holds its ground despite minor issues."}
+    }, fix:null},
+  4: {n:"The Disruptor", p:"Rahu", e:"Instability, illusion, sudden reversals", bs:1, c:"#7A1010",
+    ef:{
+      career:{b:"Unexpected disruptions and missed opportunities are the norm.",bad:"Additional bad combos make career chaos near-certain. Avoid for professional use.",warn:"Career instability. Nothing goes as planned."},
+      finance:{b:"Erratic gains and losses. No financial pattern or stability.",bad:"Financial losses compounded by bad combos. High risk of serious monetary damage.",warn:"Very unpredictable. Do not rely on this number for business."},
+      relationships:{b:"Misunderstandings and hidden agendas cloud every interaction.",bad:"Relationships become a source of confusion, deception, and instability.",warn:"Trust issues and frequent misunderstandings."},
+      health:{b:"Nervous energy and anxiety are persistent underlying issues.",bad:"Severe anxiety, mental fog, and restlessness worsened by compounding bad combos.",warn:"Mental stress and unpredictable health patterns."},
+      overall:{b:"Rahu creates illusion. Things are rarely what they seem with this number.",bad:"Extremely inauspicious. This number will cause more harm than good in all areas of life.",warn:"Avoid using this as a primary number if possible."}
+    }, fix:"Adjust last digit by 1 up or down to shift root to 3 or 5."},
+  5: {n:"The Communicator", p:"Mercury", e:"Communication, quick luck, networking", bs:9, c:"#16302B",
+    ef:{
+      career:{b:"Networking thrives. Deals close fast and opportunities multiply.",bad:"Bad combos disrupt Mercury flow. Communication breakdowns and missed deals.",warn:"Strong networking energy with occasional miscommunications."},
+      finance:{b:"Quick money and multiple income streams open simultaneously.",bad:"Financial speed is disrupted. Money comes but unexpected losses cancel gains.",warn:"Good income potential with some erratic moments."},
+      relationships:{b:"Witty, charming, and well-connected. People enjoy interacting through this number.",bad:"Bad combos create friction. Charm is undermined by instability.",warn:"Mostly smooth. Occasional tension in communications."},
+      health:{b:"High mental energy and sharp thinking.",bad:"Mental overload and anxiety from bad combo disruptions. Overthinking worsens.",warn:"Good energy but avoid mental exhaustion."},
+      overall:{b:"Mercury number. Ideal for business and daily communication.",bad:"Mercury speed is partially neutralised. Still functional but far below potential.",warn:"Good overall with manageable friction."}
+    }, fix:null},
+  6: {n:"The Harmoniser", p:"Venus", e:"Luxury, love, harmony, beauty", bs:8, c:"#16302B",
+    ef:{
+      career:{b:"Favours creative, luxury, hospitality, and relationship-based industries.",bad:"Bad combos disrupt Venusian harmony. Professional relationships become strained.",warn:"Creative success is present but needs patience."},
+      finance:{b:"Comfortable wealth and genuine enjoyment of earnings.",bad:"Financial comfort disrupted. Unexpected losses undercut Venus natural abundance.",warn:"Generally comfortable. Minor financial friction."},
+      relationships:{b:"Loving, magnetic, and socially popular. People are drawn to this energy.",bad:"Bad combos introduce conflict into relationships. Harmony is disrupted.",warn:"Warm energy overall. Occasional disagreements."},
+      health:{b:"Good health energy. Venus encourages self-care and balance.",bad:"Overindulgence combined with stress from bad combos. Watch physical health.",warn:"Good health. Avoid excess in lifestyle."},
+      overall:{b:"Venus energy. Pleasant, harmonious interactions on every call.",bad:"Venus harmony is weakened but not destroyed. Still better than most numbers.",warn:"Positive overall. Venus holds strong against minor issues."}
+    }, fix:null},
+  7: {n:"The Seeker", p:"Ketu", e:"Spirituality, research, introspection", bs:5, c:"#4A6080",
+    ef:{
+      career:{b:"Best for research, academia, spiritual, or investigative roles.",bad:"Bad combos add worldly chaos to Ketu detachment. Career becomes directionless.",warn:"Unclear career path. Best for independent or spiritual work."},
+      finance:{b:"Detachment from the material. Money comes and goes without strong pattern.",bad:"Financial instability worsened by bad combos. Avoid using for business.",warn:"Financially inconsistent. Not ideal for primary income-generating use."},
+      relationships:{b:"Distant, private, and unconventional connections.",bad:"Bad combos create deep misunderstandings. Relationships become isolating.",warn:"Relationships are meaningful but complex."},
+      health:{b:"Needs solitude and regular rest to maintain balance.",bad:"Mental and physical depletion from bad combo stress compounds Ketu isolating energy.",warn:"Rest and mental health are priorities."},
+      overall:{b:"Spiritual number. Powerful for seekers, limiting for worldly goals.",bad:"Bad combos make this number unsuitable for most practical daily use.",warn:"Use with caution. Better for personal than business use."}
+    }, fix:"Ensure last digit is 1, 3, or 5 to ground the energy."},
+  8: {n:"The Karmic Test", p:"Saturn", e:"Karma, discipline, delays, hard work", bs:3, c:"#390517",
+    ef:{
+      career:{b:"Hard work is required at every step. Rewards arrive very late if at all.",bad:"Bad combos compound Saturn burden. Career feels like a permanent uphill battle.",warn:"Slow career progress. Requires exceptional patience and persistence."},
+      finance:{b:"Money is earned through hard struggle. Risk of heavy losses is always present.",bad:"Severe financial risk. Bad combos on top of Saturn make monetary loss very likely.",warn:"Financial hardship likely. Avoid major investments while using this number."},
+      relationships:{b:"Interactions feel serious, heavy, and obligatory rather than warm.",bad:"Relationships become burdensome. Bad combos add conflict and resentment.",warn:"Relationships are strained. Requires significant effort to maintain."},
+      health:{b:"Chronic stress and fatigue accumulate over time. Rest is non-negotiable.",bad:"Health severely impacted. Bad combos accelerate burnout and chronic stress.",warn:"Health struggles. Prioritise rest and avoid overcommitting."},
+      overall:{b:"Saturn tests you relentlessly. Only recommended for strong Saturn horoscopes.",bad:"This number is a serious liability. Bad combos make it extremely inauspicious.",warn:"Extremely challenging. Change this number if possible."}
+    }, fix:"Change last digit up or down by 1 to shift root away from 8."},
+  9: {n:"The Warrior", p:"Mars", e:"Courage, drive, energy, completion", bs:7, c:"#7A4500",
+    ef:{
+      career:{b:"Competitive edge. Wins in tough fields and drives ambitions forward.",bad:"Bad combos redirect Mars energy into aggression and conflict. Career disputes increase.",warn:"Strong drive present. Occasional impulsiveness to manage."},
+      finance:{b:"Good earnings with a natural drive to generate income.",bad:"Impulsive financial decisions worsened by bad combo instability. Unexpected losses.",warn:"Good income but watch impulsive spending and risky decisions."},
+      relationships:{b:"Passionate and energetic. People feel your presence strongly.",bad:"Bad combos turn Mars passion into aggression. Conflicts and power struggles increase.",warn:"Intense relationships. Passionate but needs patience from both sides."},
+      health:{b:"High stamina and strong physical energy.",bad:"Aggression, anger, and stress from bad combos can cause physical and mental harm.",warn:"Good vitality. Manage anger and avoid reckless behaviour."},
+      overall:{b:"Mars number. Powerful for action-takers and go-getters.",bad:"Mars power is partially turned against you. The number creates as many obstacles as it removes.",warn:"Still a good number. Mars holds mostly positive despite minor issues."}
+    }, fix:null}
+};
+
+var BC = [
+  {pa:"44",sv:"bad",dt:3,ti:"44 - Double Rahu",bo:"Two consecutive 4s massively amplify Rahu shadow energy. Extreme instability, illusions, and sudden losses. One of the most inauspicious patterns.",fi:"Avoid any number containing 44. No root number neutralises this."},
+  {pa:"88",sv:"bad",dt:3,ti:"88 - Double Saturn",bo:"Double Saturn is extreme karmic burden. Constant delays, financial blocks, and heavy responsibilities with little reward.",fi:"Avoid 88 in any number regardless of root."},
+  {pa:"00",sv:"bad",dt:2,ti:"00 - Double Void",bo:"Two consecutive zeros create a dead zone. Energy completely stagnates and opportunities pass by without materialising.",fi:"Avoid numbers with 00, especially in the last 4 digits."},
+  {pa:"48",sv:"bad",dt:3,ti:"48 - Rahu and Saturn",bo:"Rahu chaos paired with Saturn restriction. Among the worst combos. Unpredictable losses, legal troubles, and prolonged suffering.",fi:"This combination anywhere is a strong reason to reject the number."},
+  {pa:"84",sv:"bad",dt:3,ti:"84 - Saturn and Rahu",bo:"Restriction followed by chaos. Doors close just when things seem to move. Constant frustration and blocked progress.",fi:"Reject any number containing 84."},
+  {pa:"42",sv:"bad",dt:2,ti:"42 - Rahu and Moon",bo:"Rahu disturbs Moon stability. Emotional confusion, mental fog, poor decision-making, and financial disruptions.",fi:"Replace or rearrange digits to eliminate this pair."},
+  {pa:"24",sv:"bad",dt:2,ti:"24 - Moon and Rahu",bo:"Moon energy enters then gets swallowed by Rahu. Emotional sensitivity turned into instability and illusion.",fi:"Avoid 24 in sequence, especially in the last 5 digits."},
+  {pa:"49",sv:"bad",dt:2,ti:"49 - Rahu and Mars",bo:"Rahu chaos combined with Mars aggression. Explosive energy. Accidents, legal disputes, sudden confrontations.",fi:"Particularly dangerous for business numbers."},
+  {pa:"94",sv:"bad",dt:2,ti:"94 - Mars and Rahu",bo:"Mars drives forward, Rahu destabilises the outcome. Effort and energy wasted on results that fall apart.",fi:"Avoid especially if your birth number is 9 or 4."},
+  {pa:"40",sv:"bad",dt:2,ti:"40 - Rahu and Zero",bo:"Rahu disruptive energy followed by a void. Efforts disappear into nothing.",fi:"Avoid 40 anywhere in the number."},
+  {pa:"04",sv:"bad",dt:2,ti:"04 - Zero and Rahu",bo:"A void entrance leading into Rahu energy. Starts from nothing, leads to confusion.",fi:"Avoid 04 especially at start or end of a number."},
+  {pa:"80",sv:"bad",dt:2,ti:"80 - Saturn and Zero",bo:"Saturn burden followed by a void. Hard work leads to empty results. Strong indicator of financial drain.",fi:"Avoid 80 in the last 4 digits especially."},
+  {pa:"08",sv:"bad",dt:1,ti:"08 - Zero and Saturn",bo:"Emptiness entering Saturn domain. Slow, heavy, unproductive energy.",fi:"Avoid 08 especially as opening or closing digits."},
+  {pa:"28",sv:"warn",dt:1,ti:"28 - Moon and Saturn",bo:"Moon emotions crushed by Saturn weight. Emotional suffering, depression, feeling trapped.",fi:"Acceptable if root is strong (1, 3, 5), but avoid for sensitive individuals."},
+  {pa:"82",sv:"warn",dt:1,ti:"82 - Saturn and Moon",bo:"Heavy Saturn followed by vulnerable Moon. Hardship affecting emotional wellbeing.",fi:"Pair with a strong closing digit (1, 3, 5, 9) to reduce impact."},
+  {pa:"18",sv:"warn",dt:1,ti:"18 - Sun and Saturn",bo:"Sun authority clashes with Saturn restriction. Success repeatedly blocked by obstacles or people in power.",fi:"Acceptable if root is 3 or 5. Otherwise consider replacing."},
+  {pa:"81",sv:"warn",dt:1,ti:"81 - Saturn and Sun",bo:"After delays and hard work, Sun energy arrives but momentum is already lost. Mixed results.",fi:"Check the full root. If root is strong, this is manageable."},
+  {pa:"16",sv:"warn",dt:1,ti:"16 - Sun and Venus",bo:"Sun and Venus are natural enemies. Authority and luxury clash. Status and comfort never align easily.",fi:"Compensate with a strong root number (3, 5, or 9)."},
+  {pa:"61",sv:"warn",dt:1,ti:"61 - Venus and Sun",bo:"Comfort and authority in conflict. Personal pleasures disrupted by responsibilities and ego clashes.",fi:"Not critical but note this tension especially in personal numbers."}
+];
+
+var GOOD = [1,3,5,6,9];
+var WARND = [2,7];
+var BADD = [4,8];
+
+function dSty(d, inC) {
+  if (inC) { return "background:#F5D8D8;color:#6E1010;border:2px solid #A02020;"; }
+  if (d === 0) { return "background:#EEEEEE;color:#777;border:2px solid transparent;"; }
+  var gi, wi, bi;
+  for (gi = 0; gi < GOOD.length; gi++) { if (GOOD[gi] === d) { return "background:#D0ECD8;color:#0E5C28;border:2px solid transparent;"; } }
+  for (wi = 0; wi < WARND.length; wi++) { if (WARND[wi] === d) { return "background:#F5ECC8;color:#7A5800;border:2px solid transparent;"; } }
+  return "background:#F5D8D8;color:#6E1010;border:2px solid transparent;";
+}
+
+function sVerd(s) {
+  if (s >= 8) { return {l:"Excellent", c:"bgg"}; }
+  if (s >= 6) { return {l:"Good",      c:"bgi"}; }
+  if (s >= 4) { return {l:"Average",   c:"bga"}; }
+  if (s >= 2) { return {l:"Caution",   c:"bgw"}; }
+  return {l:"Avoid", c:"bgb"};
+}
+
+function bCol(s) {
+  if (s >= 7) { return "#167038"; }
+  if (s >= 4) { return "#A07800"; }
+  return "#A02020";
+}
+
+function findCombos(raw) {
+  var found = [];
+  var i, c, pos, idx, obj;
+  for (i = 0; i < BC.length; i++) {
+    c = BC[i];
+    pos = [];
+    idx = 0;
+    while (true) {
+      idx = raw.indexOf(c.pa, idx);
+      if (idx === -1) { break; }
+      pos.push(idx);
+      idx = idx + 1;
+    }
+    if (pos.length > 0) {
+      obj = {pa:c.pa, sv:c.sv, dt:c.dt, ti:c.ti, bo:c.bo, fi:c.fi, positions:pos, count:pos.length};
+      found.push(obj);
+    }
+  }
+  return found;
+}
+
+function getEff(nd, hasBad, hasWarn, key) {
+  var e = nd.ef[key];
+  if (hasBad)  { return {txt: e.b + " " + e.bad,  imp:"bad"}; }
+  if (hasWarn) { return {txt: e.b + " " + e.warn, imp:"warn"}; }
+  return {txt: e.b, imp:"good"};
+}
+
+function safeStr(s) {
+  if (s === null || s === undefined) { return ""; }
+  return String(s)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
+function inArr(arr, val) {
+  var i;
+  for (i = 0; i < arr.length; i++) { if (arr[i] === val) { return true; } }
+  return false;
+}
+
+function run() {
+  var pEl = document.getElementById("pIn");
+  var emEl = document.getElementById("emsg");
+  var raw = "";
+  var ch, i, digits, sum, d2arr, next, stepParts, root, nd;
+  var issues, deduct, allHL, combos, c, td, posStr;
+  var last, first, zc, tz, tzMatch, cnts, dk, cnt, dn;
+  var finalScore, sv, hasBad, hasWarn;
+  var j, k;
+
+  // Clean input
+  var rawInput = pEl.value;
+  for (i = 0; i < rawInput.length; i++) {
+    ch = rawInput.charAt(i);
+    if (ch >= "0" && ch <= "9") { raw = raw + ch; }
+  }
+
+  if (raw.length < 6) {
+    emEl.textContent = "Please enter at least 6 digits.";
+    return;
+  }
+  emEl.textContent = "";
+
+  // Build digits array
+  digits = [];
+  for (i = 0; i < raw.length; i++) {
+    digits.push(parseInt(raw.charAt(i), 10));
+  }
+
+  // Calculate root
+  sum = 0;
+  for (i = 0; i < digits.length; i++) { sum = sum + digits[i]; }
+  stepParts = [digits.join("+") + " = " + sum];
+  while (sum > 9) {
+    d2arr = String(sum).split("");
+    next = 0;
+    for (i = 0; i < d2arr.length; i++) { next = next + parseInt(d2arr[i], 10); }
+    stepParts.push(String(sum).split("").join("+") + " = " + next);
+    sum = next;
+  }
+  root = sum;
+  nd = ND[root];
+
+  issues = [];
+  deduct = 0;
+  allHL = [];
+
+  // 1. Root
+  issues.push({
+    tp: nd.bs >= 7 ? "good" : nd.bs >= 4 ? "warn" : "bad",
+    ti: "Root " + root + " - " + nd.n,
+    bo: "Reduces to " + root + ", governed by " + nd.p + ". " + nd.e + ".",
+    fi: nd.fix,
+    tag: "R",
+    sn: "Base: " + nd.bs + "/10"
+  });
+
+  // 2. Bad combos
+  combos = findCombos(raw);
+  for (i = 0; i < combos.length; i++) {
+    c = combos[i];
+    td = c.dt * c.count;
+    deduct = deduct + td;
+    for (j = 0; j < c.positions.length; j++) {
+      allHL.push(c.positions[j]);
+      allHL.push(c.positions[j] + 1);
+    }
+    posStr = "";
+    for (j = 0; j < c.positions.length; j++) {
+      if (j > 0) { posStr = posStr + ", "; }
+      posStr = posStr + (c.positions[j] + 1);
+    }
+    issues.push({
+      tp: c.sv,
+      ti: c.ti + (c.count > 1 ? " (x" + c.count + ")" : "") + " at position " + posStr,
+      bo: c.bo,
+      fi: c.fi,
+      tag: "C",
+      sn: "-" + td + "pt" + (td > 1 ? "s" : "")
+    });
+  }
+
+  // 3. Last digit
+  last = digits[digits.length - 1];
+  if (last === 0) {
+    deduct = deduct + 2;
+    issues.push({tp:"bad", ti:"Last digit 0 - void exit", bo:"Zero as last digit means energy has nowhere to go. Every call ends in a void.", fi:"Change last digit to 1, 3, 5, 6, or 9.", tag:"P", sn:"-2pts"});
+  } else if (inArr(BADD, last)) {
+    deduct = deduct + 1;
+    issues.push({tp:"bad", ti:"Last digit " + last + " - weak exit (" + ND[last].p + ")", bo:"Every call closes on " + ND[last].p + " energy. " + ND[last].e + ".", fi:"Change last digit to 1, 3, 5, 6, or 9.", tag:"P", sn:"-1pt"});
+  } else if (inArr(GOOD, last)) {
+    issues.push({tp:"good", ti:"Last digit " + last + " - strong exit (" + ND[last].p + ")", bo:"Every call closes on " + ND[last].p + " energy. " + ND[last].e + ".", fi:null, tag:"P", sn:null});
+  } else {
+    deduct = deduct + 1;
+    issues.push({tp:"warn", ti:"Last digit " + last + " - neutral exit", bo:"Closes on " + ND[last].p + " energy. Acceptable but not ideal.", fi:"Consider last digit 1, 3, 5, 6, or 9.", tag:"P", sn:"-1pt"});
+  }
+
+  // 4. First digit
+  first = digits[0];
+  if (inArr(BADD, first)) {
+    deduct = deduct + 1;
+    issues.push({tp:"warn", ti:"Opens on " + first + " (" + ND[first].p + ")", bo:"Entry vibration is " + ND[first].e + ".", fi:"Prefer opening digit 1, 3, 5, 6, or 9.", tag:"P", sn:"-1pt"});
+  }
+
+  // 5. Zeros
+  zc = 0;
+  for (i = 0; i < digits.length; i++) { if (digits[i] === 0) { zc = zc + 1; } }
+  tzMatch = raw.match(/0+$/);
+  tz = tzMatch ? tzMatch[0].length : 0;
+  if (tz >= 3) {
+    deduct = deduct + 2;
+    issues.push({tp:"bad", ti:tz + " trailing zeros", bo:"Multiple zeros at end severely dampen energy. Opportunities dissolve before materialising.", fi:"Avoid any number with 3 or more trailing zeros.", tag:"Z", sn:"-2pts"});
+  }
+  if (zc >= 4) {
+    deduct = deduct + 1;
+    issues.push({tp:"warn", ti:"High zero count (" + zc + " zeros)", bo:"Many zeros dilute overall vibrational flow.", fi:"Aim for fewer than 3 zeros in a 10-digit number.", tag:"Z", sn:"-1pt"});
+  }
+
+  // 6. Repeating digits
+  cnts = {};
+  for (i = 0; i < digits.length; i++) {
+    dk = digits[i];
+    cnts[dk] = (cnts[dk] || 0) + 1;
+  }
+  for (dk in cnts) {
+    if (cnts.hasOwnProperty(dk)) {
+      dn = parseInt(dk, 10);
+      cnt = cnts[dk];
+      if (cnt >= 4 && dn !== 0) {
+        if (inArr(BADD, dn)) {
+          deduct = deduct + 2;
+          issues.push({tp:"bad", ti:"Digit " + dn + " repeats " + cnt + " times", bo:"Heavy repetition of " + dn + " (" + ND[dn].p + ") amplifies its negative energy.", fi:"Avoid " + dn + " repeating more than twice.", tag:"Re", sn:"-2pts"});
+        } else if (inArr(GOOD, dn)) {
+          issues.push({tp:"good", ti:"Digit " + dn + " repeats " + cnt + " times - power pattern", bo:"Repetition of " + dn + " (" + ND[dn].p + ") amplifies its positive vibration.", fi:null, tag:"Re", sn:null});
+        }
+      }
+    }
+  }
+
+  finalScore = nd.bs - deduct;
+  if (finalScore < 1) { finalScore = 1; }
+  sv = sVerd(finalScore);
+
+  hasBad = false;
+  hasWarn = false;
+  for (i = 0; i < issues.length; i++) {
+    if (issues[i].tp === "bad" && issues[i].tag === "C") { hasBad = true; break; }
+  }
+  if (!hasBad) {
+    for (i = 0; i < issues.length; i++) {
+      if (issues[i].tp === "warn" && issues[i].tag === "C") { hasWarn = true; break; }
+    }
+  }
+
+  // -- RENDER --
+  var rNum = document.getElementById("rNum");
+  rNum.textContent = root;
+  rNum.style.color = nd.c;
+
+  document.getElementById("rName").textContent = root + " - " + nd.n;
+  document.getElementById("rPlan").textContent = "Ruled by " + nd.p + " - " + nd.e;
+
+  var bar = document.getElementById("rBar");
+  bar.style.width = (finalScore * 10) + "%";
+  bar.style.background = bCol(finalScore);
+
+  var stxt = document.getElementById("rStxt");
+  stxt.textContent = finalScore + "/10";
+  stxt.style.color = bCol(finalScore);
+
+  var vEl = document.getElementById("rVerd");
+  vEl.textContent = sv.l;
+  vEl.className = "bdg " + sv.c;
+
+  var dnEl = document.getElementById("rDnote");
+  if (deduct > 0) {
+    var iCount = 0;
+    for (i = 0; i < issues.length; i++) {
+      if (issues[i].sn && issues[i].sn.charAt(0) === "-") { iCount = iCount + 1; }
+    }
+    dnEl.textContent = "Base " + nd.bs + "/10 minus " + deduct + " pts for " + iCount + " issue" + (iCount !== 1 ? "s" : "") + " = " + finalScore + "/10";
+  } else {
+    dnEl.textContent = "";
+  }
+
+  // Pills
+  var pillsEl = document.getElementById("rPills");
+  pillsEl.innerHTML = "";
+  var bc2 = 0, wc2 = 0, gc2 = 0;
+  for (i = 0; i < issues.length; i++) {
+    if (issues[i].tp === "bad") { bc2 = bc2 + 1; }
+    else if (issues[i].tp === "warn") { wc2 = wc2 + 1; }
+    else { gc2 = gc2 + 1; }
+  }
+  if (bc2 > 0) { pillsEl.innerHTML = pillsEl.innerHTML + "<span class='pill pb'>" + bc2 + " Issue" + (bc2 !== 1 ? "s" : "") + "</span>"; }
+  if (wc2 > 0) { pillsEl.innerHTML = pillsEl.innerHTML + "<span class='pill pw'>" + wc2 + " Caution" + (wc2 !== 1 ? "s" : "") + "</span>"; }
+  if (gc2 > 0) { pillsEl.innerHTML = pillsEl.innerHTML + "<span class='pill pg'>" + gc2 + " Positive" + (gc2 !== 1 ? "s" : "") + "</span>"; }
+
+  // Calc steps
+  var calcEl = document.getElementById("rCalc");
+  calcEl.innerHTML = "";
+  var calcHtml = "";
+  for (i = 0; i < stepParts.length; i++) {
+    if (i > 0) { calcHtml = calcHtml + " &rarr; "; }
+    calcHtml = calcHtml + safeStr(stepParts[i]);
+  }
+  calcHtml = calcHtml + " &rarr; Root: <strong>" + root + "</strong>";
+  calcEl.innerHTML = calcHtml;
+
+  // Digit map
+  var digsEl = document.getElementById("rDigs");
+  digsEl.innerHTML = "";
+  for (i = 0; i < digits.length; i++) {
+    var inC = inArr(allHL, i);
+    var wEl = document.createElement("div");
+    wEl.className = "dw";
+    var cEl = document.createElement("div");
+    cEl.className = "dc";
+    cEl.setAttribute("style", dSty(digits[i], inC));
+    cEl.textContent = digits[i];
+    wEl.appendChild(cEl);
+    if (inC) {
+      var wn = document.createElement("div");
+      wn.className = "dwn";
+      wn.textContent = "bad combo";
+      wEl.appendChild(wn);
+    }
+    digsEl.appendChild(wEl);
+  }
+
+  // Analysis cards
+  var cardsEl = document.getElementById("rCards");
+  cardsEl.innerHTML = "";
+  var tagMap = {R:"tR", C:"tC", P:"tP", Z:"tZ", Re:"tRe"};
+  var tagLabel = {R:"Root", C:"Combo", P:"Pattern", Z:"Zeros", Re:"Repeat"};
+  var typeMap = {
+    good: {cls:"cg", bc:"bgg", lbl:"Positive"},
+    warn: {cls:"cw", bc:"bgw", lbl:"Caution"},
+    bad:  {cls:"cb", bc:"bgb", lbl:"Issue"}
+  };
+  for (i = 0; i < issues.length; i++) {
+    var iss = issues[i];
+    var tm = typeMap[iss.tp];
+    var tagCls = tagMap[iss.tag] || "tR";
+    var tagLbl = tagLabel[iss.tag] || iss.tag;
+    var html = "<div class='card " + tm.cls + "'>";
+    html = html + "<div class='chdr'>";
+    html = html + "<div class='crow'>";
+    html = html + "<span class='tag " + tagCls + "'>" + tagLbl + "</span>";
+    html = html + "<span class='ctit'>" + safeStr(iss.ti) + "</span>";
+    html = html + "</div>";
+    html = html + "<div class='cbdg'>";
+    if (iss.sn && iss.sn.charAt(0) === "-") {
+      html = html + "<span class='sn'>" + safeStr(iss.sn) + "</span>";
+    }
+    html = html + "<span class='bdg " + tm.bc + "'>" + tm.lbl + "</span>";
+    html = html + "</div></div>";
+    html = html + "<div class='cbod'>" + safeStr(iss.bo) + "</div>";
+    if (iss.fi) {
+      html = html + "<div class='cfix'>&rarr; " + safeStr(iss.fi) + "</div>";
+    }
+    html = html + "</div>";
+    cardsEl.innerHTML = cardsEl.innerHTML + html;
+  }
+
+  // Effects
+  var effsEl = document.getElementById("rEffs");
+  effsEl.innerHTML = "";
+  var efList = [
+    {ico:"&#128188;", lbl:"Career",       key:"career"},
+    {ico:"&#128176;", lbl:"Finance",       key:"finance"},
+    {ico:"&#129309;", lbl:"Relationships", key:"relationships"},
+    {ico:"&#10084;",  lbl:"Health",        key:"health"},
+    {ico:"&#10024;",  lbl:"Overall Aura",  key:"overall"}
+  ];
+  var impLbl = {good:"Positive", warn:"Partially Affected", bad:"Negatively Impacted"};
+  var impCls = {good:"eig",      warn:"eiw",                bad:"eib"};
+  for (i = 0; i < efList.length; i++) {
+    var ef = efList[i];
+    var et = getEff(nd, hasBad, hasWarn, ef.key);
+    var ehtml = "<div class='ec'>";
+    ehtml = ehtml + "<div class='eico'>" + ef.ico + "</div>";
+    ehtml = ehtml + "<span class='eimp " + impCls[et.imp] + "'>" + impLbl[et.imp] + "</span>";
+    ehtml = ehtml + "<div class='elbl'>" + ef.lbl + "</div>";
+    ehtml = ehtml + "<div class='ebod'>" + safeStr(et.txt) + "</div>";
+    ehtml = ehtml + "</div>";
+    effsEl.innerHTML = effsEl.innerHTML + ehtml;
+  }
+
+  // What to change
+  var chngEl = document.getElementById("rChng");
+  chngEl.innerHTML = "";
+  var cItems = [];
+  for (i = 0; i < issues.length; i++) {
+    if ((issues[i].tp === "bad" || issues[i].tp === "warn") && issues[i].fi) {
+      cItems.push(issues[i]);
+    }
+  }
+  if (cItems.length === 0) {
+    chngEl.innerHTML = "<div class='noiss'>No critical changes needed. This is a strong number.</div>";
+  } else {
+    for (i = 0; i < cItems.length; i++) {
+      var ch2 = "<div class='card cch'>";
+      ch2 = ch2 + "<div class='ctit' style='margin-bottom:5px'>" + safeStr(cItems[i].ti) + "</div>";
+      ch2 = ch2 + "<div class='cfix'>&rarr; " + safeStr(cItems[i].fi) + "</div>";
+      ch2 = ch2 + "</div>";
+      chngEl.innerHTML = chngEl.innerHTML + ch2;
+    }
+  }
+
+  // Show result
+  document.getElementById("res").style.display = "block";
+  setTimeout(function() {
+    var resEl = document.getElementById("res");
+    resEl.scrollIntoView({behavior:"smooth", block:"start"});
+  }, 100);
+}
+
+// Attach button
+document.getElementById("abtn").addEventListener("click", run);
+
+// Enter key
+document.getElementById("pIn").addEventListener("keydown", function(e) {
+  if (e.keyCode === 13) { run(); }
+});
+
+// Strip non-digits on input
+document.getElementById("pIn").addEventListener("input", function() {
+  var val = this.value;
+  var clean = "";
+  var i, ch;
+  for (i = 0; i < val.length; i++) {
+    ch = val.charAt(i);
+    if (ch >= "0" && ch <= "9") { clean = clean + ch; }
+  }
+  if (clean !== val) { this.value = clean; }
+});
+</script>
+</body>
+</html>
