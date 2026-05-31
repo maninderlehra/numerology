@@ -6,20 +6,11 @@
 <title>Phone Numerology - Maninderjit Singh</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --burg:#390517;
-  --tan:#A38560;
-  --tanl:#C4A070;
-  --forest:#16302B;
-  --dark:#03110D;
-  --offwhite:#E0E0E0;
-  --cream:#1C1C1C;
-}
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Lato',sans-serif;background:#111008;color:#E0E0E0;min-height:100vh;}
+body{font-family:'Lato',sans-serif;background:#EDE8DF;color:#1A1A1A;min-height:100vh;}
 
 /* HEADER */
-.hdr{background:#03110D;padding:36px 20px 26px;text-align:center;border-bottom:2px solid #A38560;}
+.hdr{background:#16302B;padding:36px 20px 26px;text-align:center;border-bottom:2px solid #A38560;}
 .hdr-eye{font-size:10px;letter-spacing:0.45em;text-transform:uppercase;color:#A38560;margin-bottom:14px;font-weight:700;}
 .hdr h1{font-family:'Playfair Display',serif;font-size:30px;font-weight:900;color:#E0E0E0;letter-spacing:0.04em;margin-bottom:8px;line-height:1.2;}
 .hdr-tag{font-size:12px;color:#6A8A7A;letter-spacing:0.06em;margin-bottom:18px;}
@@ -31,95 +22,95 @@ body{font-family:'Lato',sans-serif;background:#111008;color:#E0E0E0;min-height:1
 .wrap{max-width:660px;margin:0 auto;padding:24px 14px 60px;}
 
 /* INPUT CARD */
-.icard{background:#0C1A0E;border:1px solid #2A4A30;border-top:2px solid #A38560;border-radius:0 0 10px 10px;padding:22px;margin-bottom:18px;}
+.icard{background:#FFFFFF;border:1px solid #C8BCA8;border-top:3px solid #A38560;border-radius:0 0 10px 10px;padding:22px;margin-bottom:18px;box-shadow:0 4px 20px rgba(57,5,23,0.07);}
 .ilbl{display:block;font-size:10px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#A38560;margin-bottom:10px;}
 .irow{display:flex;gap:10px;flex-wrap:wrap;}
-.irow input{flex:1;min-width:160px;padding:13px 14px;font-size:18px;letter-spacing:0.14em;border:1px solid #2A4A30;border-radius:6px;outline:none;font-family:monospace;background:#060E08;color:#E0E0E0;}
+.irow input{flex:1;min-width:160px;padding:13px 14px;font-size:18px;letter-spacing:0.14em;border:1.5px solid #C8BCA8;border-radius:6px;outline:none;font-family:monospace;background:#FAF8F4;color:#1A1A1A;}
 .irow input:focus{border-color:#A38560;}
-.irow input::placeholder{color:#3A5A40;}
-.abtn{padding:13px 26px;background:#390517;color:#E0E0E0;border:1px solid #6A1030;border-radius:6px;font-size:13px;cursor:pointer;font-weight:700;font-family:'Lato',sans-serif;letter-spacing:0.12em;text-transform:uppercase;}
+.irow input::placeholder{color:#B0A090;}
+.abtn{padding:13px 26px;background:#390517;color:#E0E0E0;border:none;border-radius:6px;font-size:13px;cursor:pointer;font-weight:700;font-family:'Lato',sans-serif;letter-spacing:0.12em;text-transform:uppercase;}
 .abtn:active{background:#16302B;}
-.hint{font-size:12px;color:#4A6A50;margin-top:8px;}
-.emsg{color:#C06060;font-size:13px;margin-top:6px;font-weight:700;min-height:16px;}
+.hint{font-size:12px;color:#A09080;margin-top:8px;}
+.emsg{color:#A02020;font-size:13px;margin-top:6px;font-weight:700;min-height:16px;}
 
 /* RESULT */
 #res{display:none;}
 
 /* BANNER */
-.banner{display:flex;align-items:center;gap:18px;background:#0C1A0E;border:1px solid #2A4A30;border-radius:10px;padding:20px 22px;margin-bottom:12px;flex-wrap:wrap;}
+.banner{display:flex;align-items:center;gap:18px;background:#FFFFFF;border:1px solid #C8BCA8;border-radius:10px;padding:20px 22px;margin-bottom:12px;box-shadow:0 4px 20px rgba(57,5,23,0.07);flex-wrap:wrap;}
 .bnum{font-family:'Playfair Display',serif;font-size:60px;font-weight:900;line-height:1;min-width:66px;}
 .binfo{flex:1;min-width:170px;}
-.bname{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:3px;color:#E0E0E0;}
-.bplan{font-size:13px;color:#7A9A7A;margin-bottom:11px;}
+.bname{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:3px;color:#1A1A1A;}
+.bplan{font-size:13px;color:#7A6A50;margin-bottom:11px;}
 .srow{display:flex;align-items:center;gap:10px;}
-.sbg{flex:1;height:8px;background:#1A2E1A;border-radius:4px;overflow:hidden;min-width:70px;}
+.sbg{flex:1;height:8px;background:#E0D8C8;border-radius:4px;overflow:hidden;min-width:70px;}
 .sfill{height:100%;border-radius:4px;transition:width 0.5s;}
 .stxt{font-size:14px;font-weight:800;min-width:42px;}
 .bdg{display:inline-block;padding:3px 11px;border-radius:4px;font-size:11px;font-weight:700;letter-spacing:0.06em;}
-.dnote{font-size:12px;color:#C07050;margin-top:6px;font-weight:600;}
+.dnote{font-size:12px;color:#A02020;margin-top:6px;font-weight:600;}
 
 /* PILLS */
 .pills{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;}
 .pill{padding:4px 12px;border-radius:4px;font-size:12px;font-weight:700;}
-.pb{background:#390517;color:#F0A0A0;border:1px solid #6A1030;}
-.pw{background:#3A2A00;color:#E0C060;border:1px solid #6A5010;}
-.pg{background:#0A2A14;color:#60C080;border:1px solid #1A5A30;}
+.pb{background:#F5D8D8;color:#6E1010;border:1px solid #D0A0A0;}
+.pw{background:#F5ECC8;color:#7A5800;border:1px solid #D0C080;}
+.pg{background:#D0ECD8;color:#0E5C28;border:1px solid #90C8A0;}
 
 /* CALC */
-.calc{background:#060E08;border-radius:6px;padding:10px 14px;font-size:13px;color:#7AAA7A;margin-bottom:18px;font-family:monospace;word-break:break-all;line-height:1.7;border-left:3px solid #A38560;}
+.calc{background:#F5F0E8;border-radius:6px;padding:10px 14px;font-size:13px;color:#6A5A3A;margin-bottom:18px;font-family:monospace;word-break:break-all;line-height:1.7;border-left:3px solid #A38560;}
 
 /* SECTION LABEL */
 .sec{font-size:10px;font-weight:700;color:#A38560;text-transform:uppercase;letter-spacing:0.25em;margin:26px 0 10px;display:flex;align-items:center;gap:10px;}
-.sec::after{content:'';flex:1;height:1px;background:#1E3A22;}
+.sec::after{content:'';flex:1;height:1px;background:#C8BCA8;}
 
 /* DIGIT MAP */
 .dstrip{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:10px;}
 .dw{position:relative;margin-bottom:24px;}
 .dc{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;}
-.dwn{position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);font-size:9px;color:#C06060;white-space:nowrap;font-weight:700;}
-.leg{display:flex;gap:12px;font-size:11px;color:#4A6A50;flex-wrap:wrap;margin-bottom:6px;}
+.dwn{position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);font-size:9px;color:#A02020;white-space:nowrap;font-weight:700;}
+.leg{display:flex;gap:12px;font-size:11px;color:#8A7A60;flex-wrap:wrap;margin-bottom:6px;}
 .ld{display:inline-block;width:10px;height:10px;border-radius:50%;vertical-align:middle;margin-right:3px;}
 
 /* CARDS */
 .card{border-radius:8px;padding:14px 15px;margin-bottom:9px;}
-.cg{background:#071510;border:1px solid #1A4A28;border-left:3px solid #28A060;}
-.cw{background:#140E00;border:1px solid #3A2A00;border-left:3px solid #A07800;}
-.cb{background:#140206;border:1px solid #4A1020;border-left:3px solid #A02040;}
-.cch{background:#0C1A0E;border:1px solid #2A4A30;border-left:3px solid #A38560;}
+.cg{background:#F0FAF4;border:1px solid #B0D8C0;border-left:3px solid #28A060;}
+.cw{background:#FEFBF0;border:1px solid #E0D090;border-left:3px solid #C0A000;}
+.cb{background:#FDF5F5;border:1px solid #E0B8B8;border-left:3px solid #A02020;}
+.cch{background:#FFFFFF;border:1px solid #C8BCA8;border-left:3px solid #A38560;}
 .chdr{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;gap:8px;flex-wrap:wrap;}
 .crow{display:flex;align-items:center;gap:7px;flex:1;flex-wrap:wrap;}
-.ctit{font-size:14px;font-weight:700;font-family:'Playfair Display',serif;color:#E0E0E0;}
+.ctit{font-size:14px;font-weight:700;font-family:'Playfair Display',serif;color:#1A1A1A;}
 .tag{padding:2px 7px;border-radius:3px;font-size:10px;font-weight:700;white-space:nowrap;letter-spacing:0.06em;}
-.tR{background:#0A1A40;color:#7090E0;}
-.tC{background:#2A0510;color:#E07080;}
-.tP{background:#2A1500;color:#D09050;}
-.tZ{background:#1A1A1A;color:#888;}
-.tRe{background:#1A0A30;color:#C080E0;}
+.tR{background:#E0E8F8;color:#1A3A8A;}
+.tC{background:#F5D8D8;color:#7A1010;}
+.tP{background:#F5E8D0;color:#7A3810;}
+.tZ{background:#EBEBEB;color:#555;}
+.tRe{background:#EDE0F8;color:#5A0A8A;}
 .cbdg{display:flex;gap:5px;align-items:center;flex-shrink:0;}
-.sn{font-size:11px;font-weight:700;color:#C06060;}
-.bgg{background:#0A2A14;color:#60C080;border:1px solid #1A5A30;}
-.bgw{background:#3A2A00;color:#E0C060;border:1px solid #6A5010;}
-.bgb{background:#390517;color:#F0A0A0;border:1px solid #6A1030;}
-.bgi{background:#001A30;color:#60A0E0;border:1px solid #104060;}
-.bga{background:#3A2A00;color:#E0C060;border:1px solid #6A5010;}
-.cbod{font-size:13px;color:#9AB89A;line-height:1.65;margin-top:4px;}
-.cfix{font-size:12px;color:#A38560;background:#060E08;border-radius:4px;padding:6px 10px;margin-top:7px;border-left:2px solid #A38560;}
+.sn{font-size:11px;font-weight:700;color:#A02020;}
+.bgg{background:#D0ECD8;color:#0E5C28;border:1px solid #90C8A0;}
+.bgw{background:#F5ECC8;color:#7A5800;border:1px solid #D0C080;}
+.bgb{background:#F5D8D8;color:#6E1010;border:1px solid #D0A0A0;}
+.bgi{background:#D0E8F8;color:#0A3A6A;border:1px solid #90C0E0;}
+.bga{background:#F5ECC8;color:#7A5800;border:1px solid #D0C080;}
+.cbod{font-size:13px;color:#4A3A28;line-height:1.65;margin-top:4px;}
+.cfix{font-size:12px;color:#16302B;background:rgba(22,48,43,0.06);border-radius:4px;padding:6px 10px;margin-top:7px;border-left:2px solid #A38560;}
 
 /* EFFECTS */
 .egrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:9px;margin-bottom:22px;}
-.ec{background:#0C1A0E;border:1px solid #2A4A30;border-top:2px solid #A38560;border-radius:8px;padding:14px 13px;}
+.ec{background:#FFFFFF;border:1px solid #C8BCA8;border-top:2px solid #A38560;border-radius:8px;padding:14px 13px;box-shadow:0 2px 8px rgba(57,5,23,0.05);}
 .eico{font-size:20px;margin-bottom:6px;}
 .eimp{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:3px;margin-bottom:5px;letter-spacing:0.05em;}
-.eig{background:#0A2A14;color:#60C080;border:1px solid #1A5A30;}
-.eiw{background:#3A2A00;color:#E0C060;border:1px solid #6A5010;}
-.eib{background:#390517;color:#F0A0A0;border:1px solid #6A1030;}
-.elbl{font-size:13px;font-weight:700;margin-bottom:4px;font-family:'Playfair Display',serif;color:#C4A070;}
-.ebod{font-size:12px;color:#8AAA8A;line-height:1.5;}
+.eig{background:#D0ECD8;color:#0E5C28;border:1px solid #90C8A0;}
+.eiw{background:#F5ECC8;color:#7A5800;border:1px solid #D0C080;}
+.eib{background:#F5D8D8;color:#6E1010;border:1px solid #D0A0A0;}
+.elbl{font-size:13px;font-weight:700;margin-bottom:4px;font-family:'Playfair Display',serif;color:#390517;}
+.ebod{font-size:12px;color:#5A4A38;line-height:1.5;}
 
-.noiss{background:#071510;border:1px solid #1A4A28;border-left:3px solid #28A060;border-radius:8px;padding:13px 15px;font-size:13px;color:#60C080;font-weight:600;}
+.noiss{background:#F0FAF4;border:1px solid #B0D8C0;border-left:3px solid #28A060;border-radius:8px;padding:13px 15px;font-size:13px;color:#0E5C28;font-weight:600;}
 
 /* FOOTER */
-.ftr{text-align:center;padding:24px 14px 14px;font-size:10px;color:#3A5A40;letter-spacing:0.12em;text-transform:uppercase;border-top:1px solid #1A3A1E;margin-top:36px;line-height:2.4;}
+.ftr{text-align:center;padding:24px 14px 14px;font-size:10px;color:#A09080;letter-spacing:0.12em;text-transform:uppercase;border-top:1px solid #C8BCA8;margin-top:36px;line-height:2.4;}
 .ftr b{color:#A38560;}
 </style>
 </head>
@@ -259,25 +250,86 @@ var ND = {
 };
 
 var BC = [
-  {pa:"44",sv:"bad",dt:3,ti:"44 - Double Rahu",bo:"Two consecutive 4s massively amplify Rahu shadow energy. Extreme instability, illusions, and sudden losses. One of the most inauspicious patterns.",fi:"Avoid any number containing 44. No root number neutralises this."},
-  {pa:"88",sv:"bad",dt:3,ti:"88 - Double Saturn",bo:"Double Saturn is extreme karmic burden. Constant delays, financial blocks, and heavy responsibilities with little reward.",fi:"Avoid 88 in any number regardless of root."},
-  {pa:"00",sv:"bad",dt:2,ti:"00 - Double Void",bo:"Two consecutive zeros create a dead zone. Energy completely stagnates and opportunities pass by without materialising.",fi:"Avoid numbers with 00, especially in the last 4 digits."},
-  {pa:"48",sv:"bad",dt:3,ti:"48 - Rahu and Saturn",bo:"Rahu chaos paired with Saturn restriction. Among the worst combos. Unpredictable losses, legal troubles, and prolonged suffering.",fi:"This combination anywhere is a strong reason to reject the number."},
-  {pa:"84",sv:"bad",dt:3,ti:"84 - Saturn and Rahu",bo:"Restriction followed by chaos. Doors close just when things seem to move. Constant frustration and blocked progress.",fi:"Reject any number containing 84."},
-  {pa:"42",sv:"bad",dt:2,ti:"42 - Rahu and Moon",bo:"Rahu disturbs Moon stability. Emotional confusion, mental fog, poor decision-making, and financial disruptions.",fi:"Replace or rearrange digits to eliminate this pair."},
-  {pa:"24",sv:"bad",dt:2,ti:"24 - Moon and Rahu",bo:"Moon energy enters then gets swallowed by Rahu. Emotional sensitivity turned into instability and illusion.",fi:"Avoid 24 in sequence, especially in the last 5 digits."},
-  {pa:"49",sv:"bad",dt:2,ti:"49 - Rahu and Mars",bo:"Rahu chaos combined with Mars aggression. Explosive energy. Accidents, legal disputes, sudden confrontations.",fi:"Particularly dangerous for business numbers."},
-  {pa:"94",sv:"bad",dt:2,ti:"94 - Mars and Rahu",bo:"Mars drives forward, Rahu destabilises the outcome. Effort and energy wasted on results that fall apart.",fi:"Avoid especially if your birth number is 9 or 4."},
-  {pa:"40",sv:"bad",dt:2,ti:"40 - Rahu and Zero",bo:"Rahu disruptive energy followed by a void. Efforts disappear into nothing.",fi:"Avoid 40 anywhere in the number."},
-  {pa:"04",sv:"bad",dt:2,ti:"04 - Zero and Rahu",bo:"A void entrance leading into Rahu energy. Starts from nothing, leads to confusion.",fi:"Avoid 04 especially at start or end of a number."},
-  {pa:"80",sv:"bad",dt:2,ti:"80 - Saturn and Zero",bo:"Saturn burden followed by a void. Hard work leads to empty results. Strong indicator of financial drain.",fi:"Avoid 80 in the last 4 digits especially."},
+  {pa:"44",sv:"bad",dt:2,ti:"44 - Double Rahu",bo:"Two consecutive 4s massively amplify Rahu shadow energy. Extreme instability, illusions, and sudden losses. One of the most inauspicious patterns.",fi:"Avoid any number containing 44. No root number neutralises this."},
+  {pa:"88",sv:"bad",dt:2,ti:"88 - Double Saturn",bo:"Double Saturn is extreme karmic burden. Constant delays, financial blocks, and heavy responsibilities with little reward.",fi:"Avoid 88 in any number regardless of root."},
+  {pa:"00",sv:"bad",dt:1,ti:"00 - Double Void",bo:"Two consecutive zeros create a dead zone. Energy completely stagnates and opportunities pass by without materialising.",fi:"Avoid numbers with 00, especially in the last 4 digits."},
+  {pa:"48",sv:"bad",dt:2,ti:"48 - Rahu and Saturn",bo:"Rahu chaos paired with Saturn restriction. Among the worst combos. Unpredictable losses, legal troubles, and prolonged suffering.",fi:"This combination anywhere is a strong reason to reject the number."},
+  {pa:"84",sv:"bad",dt:2,ti:"84 - Saturn and Rahu",bo:"Restriction followed by chaos. Doors close just when things seem to move. Constant frustration and blocked progress.",fi:"Reject any number containing 84."},
+  {pa:"42",sv:"bad",dt:1,ti:"42 - Rahu and Moon",bo:"Rahu disturbs Moon stability. Emotional confusion, mental fog, poor decision-making, and financial disruptions.",fi:"Replace or rearrange digits to eliminate this pair."},
+  {pa:"24",sv:"bad",dt:1,ti:"24 - Moon and Rahu",bo:"Moon energy enters then gets swallowed by Rahu. Emotional sensitivity turned into instability and illusion.",fi:"Avoid 24 in sequence, especially in the last 5 digits."},
+  {pa:"49",sv:"bad",dt:1,ti:"49 - Rahu and Mars",bo:"Rahu chaos combined with Mars aggression. Explosive energy. Accidents, legal disputes, sudden confrontations.",fi:"Particularly dangerous for business numbers."},
+  {pa:"94",sv:"bad",dt:1,ti:"94 - Mars and Rahu",bo:"Mars drives forward, Rahu destabilises the outcome. Effort and energy wasted on results that fall apart.",fi:"Avoid especially if your birth number is 9 or 4."},
+  {pa:"40",sv:"bad",dt:1,ti:"40 - Rahu and Zero",bo:"Rahu disruptive energy followed by a void. Efforts disappear into nothing.",fi:"Avoid 40 anywhere in the number."},
+  {pa:"04",sv:"bad",dt:1,ti:"04 - Zero and Rahu",bo:"A void entrance leading into Rahu energy. Starts from nothing, leads to confusion.",fi:"Avoid 04 especially at start or end of a number."},
+  {pa:"80",sv:"bad",dt:1,ti:"80 - Saturn and Zero",bo:"Saturn burden followed by a void. Hard work leads to empty results. Strong indicator of financial drain.",fi:"Avoid 80 in the last 4 digits especially."},
   {pa:"08",sv:"bad",dt:1,ti:"08 - Zero and Saturn",bo:"Emptiness entering Saturn domain. Slow, heavy, unproductive energy.",fi:"Avoid 08 especially as opening or closing digits."},
-  {pa:"28",sv:"warn",dt:1,ti:"28 - Moon and Saturn",bo:"Moon emotions crushed by Saturn weight. Emotional suffering, depression, feeling trapped.",fi:"Acceptable if root is strong (1, 3, 5), but avoid for sensitive individuals."},
-  {pa:"82",sv:"warn",dt:1,ti:"82 - Saturn and Moon",bo:"Heavy Saturn followed by vulnerable Moon. Hardship affecting emotional wellbeing.",fi:"Pair with a strong closing digit (1, 3, 5, 9) to reduce impact."},
-  {pa:"18",sv:"warn",dt:1,ti:"18 - Sun and Saturn",bo:"Sun authority clashes with Saturn restriction. Success repeatedly blocked by obstacles or people in power.",fi:"Acceptable if root is 3 or 5. Otherwise consider replacing."},
-  {pa:"81",sv:"warn",dt:1,ti:"81 - Saturn and Sun",bo:"After delays and hard work, Sun energy arrives but momentum is already lost. Mixed results.",fi:"Check the full root. If root is strong, this is manageable."},
-  {pa:"16",sv:"warn",dt:1,ti:"16 - Sun and Venus",bo:"Sun and Venus are natural enemies. Authority and luxury clash. Status and comfort never align easily.",fi:"Compensate with a strong root number (3, 5, or 9)."},
-  {pa:"61",sv:"warn",dt:1,ti:"61 - Venus and Sun",bo:"Comfort and authority in conflict. Personal pleasures disrupted by responsibilities and ego clashes.",fi:"Not critical but note this tension especially in personal numbers."}
+  {pa:"28",sv:"warn",dt:0,ti:"28 - Moon and Saturn",bo:"Moon emotions crushed by Saturn weight. Emotional suffering, depression, feeling trapped.",fi:"Acceptable if root is strong (1, 3, 5), but avoid for sensitive individuals."},
+  {pa:"82",sv:"warn",dt:0,ti:"82 - Saturn and Moon",bo:"Heavy Saturn followed by vulnerable Moon. Hardship affecting emotional wellbeing.",fi:"Pair with a strong closing digit (1, 3, 5, 9) to reduce impact."},
+  {pa:"18",sv:"warn",dt:0,ti:"18 - Sun and Saturn",bo:"Sun authority clashes with Saturn restriction. Success repeatedly blocked by obstacles or people in power.",fi:"Acceptable if root is 3 or 5. Otherwise consider replacing."},
+  {pa:"81",sv:"warn",dt:0,ti:"81 - Saturn and Sun",bo:"After delays and hard work, Sun energy arrives but momentum is already lost. Mixed results.",fi:"Check the full root. If root is strong, this is manageable."},
+  {pa:"16",sv:"warn",dt:0,ti:"16 - Sun and Venus",bo:"Sun and Venus are natural enemies. Authority and luxury clash. Status and comfort never align easily.",fi:"Compensate with a strong root number (3, 5, or 9)."},
+  {pa:"61",sv:"warn",dt:0,ti:"61 - Venus and Sun",bo:"Comfort and authority in conflict. Personal pleasures disrupted by responsibilities and ego clashes.",fi:"Not critical but note this tension especially in personal numbers."},
+  {pa:"14",sv:"warn",dt:0,ti:"14 - Sun and Rahu",bo:"Sun authority is constantly destabilised by Rahu illusion. Recognition arrives but gets taken away suddenly.",fi:"Compensate with a strong root number (3, 5, or 9)."},
+  {pa:"41",sv:"warn",dt:0,ti:"41 - Rahu and Sun",bo:"Rahu energy enters before Sun can stabilise. Confusion precedes every moment of clarity.",fi:"Check the full root number for balance."},
+  {pa:"62",sv:"warn",dt:0,ti:"62 - Venus and Moon",bo:"Venus comfort combined with Moon sensitivity creates emotional over-dependence and financial instability.",fi:"Ensure last digit is strong (1, 3, 5, 9)."},
+  {pa:"27",sv:"warn",dt:0,ti:"27 - Moon and Ketu",bo:"Moon emotions combined with Ketu detachment creates confusion between feeling and logic.",fi:"Acceptable for spiritual use but not for business."},
+  {pa:"72",sv:"warn",dt:0,ti:"72 - Ketu and Moon",bo:"Spiritual Ketu followed by emotional Moon. Unstable, introspective energy that avoids worldly success.",fi:"Better for personal use than business."},
+  {pa:"46",sv:"warn",dt:0,ti:"46 - Rahu and Venus",bo:"Rahu disturbs Venus harmony. Luxury and relationships appear promising but collapse unexpectedly.",fi:"Watch for deceptive financial opportunities."},
+  {pa:"64",sv:"warn",dt:0,ti:"64 - Venus and Rahu",bo:"Venus comfort followed by Rahu disruption. Pleasant beginnings lead to sudden reversals.",fi:"Avoid for relationship and lifestyle business numbers."},
+  {pa:"67",sv:"warn",dt:0,ti:"67 - Venus and Ketu",bo:"Venus luxury meets Ketu detachment. Material comfort is undermined by a sense of emptiness.",fi:"Not ideal for business or financial numbers."},
+  {pa:"76",sv:"warn",dt:0,ti:"76 - Ketu and Venus",bo:"Spiritual Ketu precedes Venusian comfort. Worldly pleasures feel hollow or undeserved.",fi:"Better for spiritual roles than commercial ones."},
+  {pa:"98",sv:"bad",dt:1,ti:"98 - Mars and Saturn",bo:"Mars drive collides with Saturn restriction. Every effort is blocked. Energy expended with minimal result.",fi:"Avoid this combination in any number used for ambition or business."},
+  {pa:"36",sv:"warn",dt:0,ti:"36 - Jupiter and Venus",bo:"Jupiter expansion and Venus luxury can create over-indulgence and unrealistic expectations.",fi:"Manageable but watch for excess and overconfidence."},
+  {pa:"63",sv:"warn",dt:0,ti:"63 - Venus and Jupiter",bo:"Venus pleasures before Jupiter wisdom. Comfort-seeking can delay growth and discipline.",fi:"Not critical but avoid for numbers requiring focus."},
+  {pa:"58",sv:"warn",dt:0,ti:"58 - Mercury and Saturn",bo:"Mercury quick energy is slowed by Saturn restriction. Communication and deals face unexpected delays.",fi:"Ensure root is strong to compensate."},
+  {pa:"85",sv:"warn",dt:0,ti:"85 - Saturn and Mercury",bo:"Saturn heaviness precedes Mercury activity. Slow start before communication opens up.",fi:"Acceptable if root is strong (1, 3, 5)."},
+  {pa:"34",sv:"warn",dt:0,ti:"34 - Jupiter and Rahu",bo:"Jupiter expansion disrupted by Rahu illusion. Opportunities appear but are not what they seem.",fi:"Cross-check any major opportunity that comes through this number."},
+  {pa:"43",sv:"warn",dt:0,ti:"43 - Rahu and Jupiter",bo:"Rahu confusion precedes Jupiter wisdom. Disorientation before clarity - results are delayed.",fi:"Compensate with a strong root and last digit."},
+  {pa:"45",sv:"warn",dt:0,ti:"45 - Rahu and Mercury",bo:"Rahu illusion disrupts Mercury communication. Misunderstandings and misleading information.",fi:"Avoid for numbers used heavily in business communication."},
+  {pa:"54",sv:"warn",dt:0,ti:"54 - Mercury and Rahu",bo:"Mercury speed followed by Rahu chaos. Fast starts lead to sudden confusion and reversals.",fi:"Watch for deals that move too fast and collapse."},
+  {pa:"89",sv:"bad",dt:1,ti:"89 - Saturn and Mars",bo:"Saturn restriction followed by Mars aggression. Frustration builds and explodes. Legal and conflict risks.",fi:"Avoid this combination especially in competitive or legal contexts."},
+  {pa:"26",sv:"warn",dt:0,ti:"26 - Moon and Venus",bo:"Moon emotion and Venus luxury create over-sensitivity and indulgence. Financial discipline suffers.",fi:"Better for personal relationships than business."},
+  {pa:"23",sv:"warn",dt:0,ti:"23 - Moon and Jupiter",bo:"Moon fluctuation before Jupiter expansion. Growth is inconsistent and emotionally driven.",fi:"Generally acceptable but watch emotional decision-making."},
+  {pa:"32",sv:"warn",dt:0,ti:"32 - Jupiter and Moon",bo:"Jupiter wisdom followed by Moon emotion. Good intentions undermined by mood swings.",fi:"Ensure closing digit is strong to stabilise this energy."},
+  {pa:"000",sv:"bad",dt:2,ti:"000 - Triple Void",bo:"Three consecutive zeros create a deep energy vacuum. All momentum stops completely. Major opportunities pass without trace.",fi:"Avoid any number containing 000. Severely inauspicious."},
+  {pa:"0000",sv:"bad",dt:3,ti:"0000 - Quadruple Void",bo:"Four consecutive zeros is among the most inauspicious patterns. Complete energy collapse. The number is essentially dead vibrationally.",fi:"Reject any number containing 0000 without exception."},
+  {pa:"11",sv:"warn",dt:0,ti:"11 - Double Sun",bo:"Double Sun creates ego clashes, overconfidence, and domination issues. Too much solar energy without balance.",fi:"Acceptable if the overall root is grounded (3, 6, or 9)."},
+  {pa:"22",sv:"warn",dt:0,ti:"22 - Double Moon",bo:"Double Moon amplifies emotional instability, mood swings, and over-sensitivity. Decisions become overly emotional.",fi:"Avoid for business numbers. Acceptable for personal use with strong root."},
+  {pa:"55",sv:"warn",dt:0,ti:"55 - Double Mercury",bo:"Double Mercury creates hyperactivity, scattered energy, and communication overload. Too many directions at once.",fi:"Can work for creative fields but avoid for structured business."},
+  {pa:"66",sv:"warn",dt:0,ti:"66 - Double Venus",bo:"Double Venus amplifies over-indulgence, laziness, and excessive comfort-seeking at the expense of ambition.",fi:"Avoid for career-focused numbers. Personal use is manageable."},
+  {pa:"77",sv:"warn",dt:0,ti:"77 - Double Ketu",bo:"Double Ketu creates extreme detachment, isolation, and spiritual obsession. Very difficult for worldly success.",fi:"Only suitable for those in pure spiritual practice."},
+  {pa:"99",sv:"warn",dt:0,ti:"99 - Double Mars",bo:"Double Mars creates extreme aggression, conflict, and impulsiveness. Arguments and confrontations increase significantly.",fi:"Avoid for personal numbers. Very challenging energy to manage."},
+  {pa:"333",sv:"bad",dt:1,ti:"333 - Triple Jupiter",bo:"Triple Jupiter creates over-expansion, unrealistic optimism, and financial excess that eventually collapses.",fi:"Paradoxically inauspicious despite Jupiter being positive. Avoid."},
+  {pa:"444",sv:"bad",dt:2,ti:"444 - Triple Rahu",bo:"Triple Rahu is catastrophic. Illusion upon illusion. Extreme instability in all areas of life.",fi:"One of the worst patterns possible. Reject any number containing 444."},
+  {pa:"555",sv:"warn",dt:0,ti:"555 - Triple Mercury",bo:"Triple Mercury creates extreme restlessness, inability to focus, and communication chaos. Too scattered to achieve anything.",fi:"Avoid for any number requiring stability or long-term commitment."},
+  {pa:"666",sv:"bad",dt:1,ti:"666 - Triple Venus",bo:"Triple Venus creates extreme over-indulgence, moral weakness, and financial recklessness. Laziness dominates over ambition.",fi:"Avoid - the excessive Venusian energy becomes self-destructive."},
+  {pa:"777",sv:"warn",dt:0,ti:"777 - Triple Ketu",bo:"Triple Ketu creates complete worldly detachment. Nothing material can be built or sustained with this energy.",fi:"Avoid for any practical or business-oriented number."},
+  {pa:"888",sv:"bad",dt:2,ti:"888 - Triple Saturn",bo:"Triple Saturn is extreme karmic burden. Life becomes a relentless series of tests, delays and hardships with almost no relief.",fi:"One of the most inauspicious patterns. Avoid without exception."},
+  {pa:"999",sv:"warn",dt:0,ti:"999 - Triple Mars",bo:"Triple Mars creates uncontrollable aggression, recklessness, and destructive energy. Conflicts follow this number everywhere.",fi:"Avoid - Mars in excess becomes its own enemy."},
+  {pa:"17",sv:"warn",dt:0,ti:"17 - Sun and Ketu",bo:"Income comes but money does not stay. Relationship ups and downs are common. Earn and lose cycle repeats.",fi:"Ensure strong root to stabilise financial flow."},
+  {pa:"71",sv:"warn",dt:0,ti:"71 - Ketu and Sun",bo:"Spiritual Ketu before Sun authority. Wisdom precedes recognition but worldly gains remain unstable.",fi:"Better for spiritual than financial focus."},
+  {pa:"19",sv:"warn",dt:0,ti:"19 - Sun and Mars",bo:"Ambitious and power-oriented but struggles in personal relationships. Drive can alienate close ones.",fi:"Balance ambition with emotional awareness."},
+  {pa:"91",sv:"warn",dt:0,ti:"91 - Mars and Sun",bo:"Powerful combination of Mars drive and Sun authority but relationship difficulties are common.",fi:"Practice patience in personal interactions."},
+  {pa:"35",sv:"warn",dt:0,ti:"35 - Jupiter and Mercury",bo:"Success tends to come away from hometown. Risk-taking personality with unstable finances in early life.",fi:"Patience in early phase - long-term outlook needed."},
+  {pa:"53",sv:"warn",dt:0,ti:"53 - Mercury and Jupiter",bo:"Fast-moving Mercury before Jupiter expansion. Quick thinker but scattered energy leads to inconsistent results.",fi:"Focus on one direction rather than multiple simultaneously."}
+
+];
+
+var GC = [
+  {pa:"12",ti:"12 - Magnetic Attraction",bo:"Magnetic personality energy. Attracts people and opportunities naturally. Excellent for networking, sales, and social careers.",ef:"Networking, sales, social roles"},
+  {pa:"21",ti:"21 - Charming Speaker",bo:"Charming, social speaker energy. Great communicator and people person. May tend toward showing off.",ef:"Communication, public speaking"},
+  {pa:"13",ti:"13 - Visionary Code",bo:"Leadership, intelligence, and mentor energy. Called the Visionary Code. Strong influence over others.",ef:"Leadership, mentoring, influence"},
+  {pa:"31",ti:"31 - Leadership Intelligence",bo:"Intelligent leadership energy. Jupiter wisdom expressed through Sun authority. Strong mentor and guide.",ef:"Leadership, intelligence, authority"},
+  {pa:"25",ti:"25 - Healing Intuition",bo:"Healing energy combined with intuition and spiritual intelligence. Excellent for healers, coaches, and counsellors.",ef:"Healing, coaching, spiritual work"},
+  {pa:"52",ti:"52 - Spiritual Intelligence",bo:"Mercury communication fused with Moon intuition. Highly intuitive and spiritually aware communicator.",ef:"Healing, spiritual guidance"},
+  {pa:"29",ti:"29 - Financial Stability",bo:"Financial stability with emotional balance. Relationship fluctuations possible but overall a stable energy.",ef:"Finance, emotional balance"},
+  {pa:"92",ti:"92 - Balanced Prosperity",bo:"Mars drive balanced by Moon emotion. Strong ambition with emotional intelligence. Good financial energy.",ef:"Finance, business, relationships"},
+  {pa:"37",ti:"37 - Intelligent Growth",bo:"Intelligent and sensitive energy that attracts growth opportunities. Jupiter wisdom meets Ketu insight.",ef:"Growth, intelligence, opportunity"},
+  {pa:"73",ti:"73 - Spiritual Wisdom",bo:"Ketu spiritual depth combined with Jupiter wisdom. Deep thinker who attracts long-term success.",ef:"Wisdom, spiritual growth"},
+  {pa:"47",ti:"47 - Business Integrity",bo:"Honesty, finance and business success. Spiritual thinking combined with long-term growth energy.",ef:"Finance, business, integrity"},
+  {pa:"74",ti:"74 - Honest Success",bo:"Long-term honest success. Rahu ambition channelled through Ketu wisdom creates grounded achievement.",ef:"Business, long-term growth"},
+  {pa:"69",ti:"69 - Luxury and Respect",bo:"Luxury attraction, charm, and corporate success. Earns deep respect from seniors and authority figures.",ef:"Corporate, luxury, social status"},
+  {pa:"96",ti:"96 - Charm and Authority",bo:"Mars energy combined with Venus luxury creates a commanding, charming personality respected in high circles.",ef:"Corporate success, charm, authority"}
 ];
 
 var GOOD = [1,3,5,6,9];
@@ -309,16 +361,34 @@ function bCol(s) {
 
 function findCombos(raw) {
   var found = [];
-  var i, c, pos, idx, obj;
-  for (i = 0; i < BC.length; i++) {
-    c = BC[i];
+  var i, c, pos, idx, obj, pi;
+  var usedPos = {};
+
+  // Sort BC longest pattern first so 0000 is checked before 000 before 00
+  var sortedBC = BC.slice().sort(function(a, b) { return b.pa.length - a.pa.length; });
+
+  for (i = 0; i < sortedBC.length; i++) {
+    c = sortedBC[i];
     pos = [];
     idx = 0;
     while (true) {
       idx = raw.indexOf(c.pa, idx);
       if (idx === -1) { break; }
-      pos.push(idx);
-      idx = idx + 1;
+      // Check if any character in this match is already claimed by a longer pattern
+      var blocked = false;
+      for (pi = idx; pi < idx + c.pa.length; pi++) {
+        if (usedPos[pi]) { blocked = true; break; }
+      }
+      if (!blocked) {
+        pos.push(idx);
+        // Mark all positions of this match as used
+        for (pi = idx; pi < idx + c.pa.length; pi++) {
+          usedPos[pi] = true;
+        }
+        idx = idx + c.pa.length;
+      } else {
+        idx = idx + 1;
+      }
     }
     if (pos.length > 0) {
       obj = {pa:c.pa, sv:c.sv, dt:c.dt, ti:c.ti, bo:c.bo, fi:c.fi, positions:pos, count:pos.length};
@@ -408,6 +478,36 @@ function run() {
 
   // 2. Bad combos
   combos = findCombos(raw);
+
+  // 2b. Good combos - flag as positive
+  var gc, gpos, gidx, gobj;
+  for (i = 0; i < GC.length; i++) {
+    gc = GC[i];
+    gpos = [];
+    gidx = 0;
+    while (true) {
+      gidx = raw.indexOf(gc.pa, gidx);
+      if (gidx === -1) { break; }
+      gpos.push(gidx);
+      gidx = gidx + 2;
+    }
+    if (gpos.length > 0) {
+      var gposStr = "";
+      for (var gi = 0; gi < gpos.length; gi++) {
+        if (gi > 0) { gposStr = gposStr + ", "; }
+        gposStr = gposStr + (gpos[gi] + 1);
+      }
+      deduct = deduct - 1;
+      issues.push({
+        tp: "good",
+        ti: gc.ti + " at position " + gposStr,
+        bo: gc.bo,
+        fi: null,
+        tag: "C",
+        sn: "+1pt"
+      });
+    }
+  }
   for (i = 0; i < combos.length; i++) {
     c = combos[i];
     td = c.dt * c.count;
@@ -453,18 +553,12 @@ function run() {
     issues.push({tp:"warn", ti:"Opens on " + first + " (" + ND[first].p + ")", bo:"Entry vibration is " + ND[first].e + ".", fi:"Prefer opening digit 1, 3, 5, 6, or 9.", tag:"P", sn:"-1pt"});
   }
 
-  // 5. Zeros
+  // 5. Zeros - only flag high zero COUNT, combos handle 00/000/0000
   zc = 0;
   for (i = 0; i < digits.length; i++) { if (digits[i] === 0) { zc = zc + 1; } }
-  tzMatch = raw.match(/0+$/);
-  tz = tzMatch ? tzMatch[0].length : 0;
-  if (tz >= 3) {
-    deduct = deduct + 2;
-    issues.push({tp:"bad", ti:tz + " trailing zeros", bo:"Multiple zeros at end severely dampen energy. Opportunities dissolve before materialising.", fi:"Avoid any number with 3 or more trailing zeros.", tag:"Z", sn:"-2pts"});
-  }
-  if (zc >= 4) {
+  if (zc >= 5) {
     deduct = deduct + 1;
-    issues.push({tp:"warn", ti:"High zero count (" + zc + " zeros)", bo:"Many zeros dilute overall vibrational flow.", fi:"Aim for fewer than 3 zeros in a 10-digit number.", tag:"Z", sn:"-1pt"});
+    issues.push({tp:"warn", ti:"Very high zero density (" + zc + " zeros)", bo:"High concentration of zeros dilutes overall vibrational flow. Energy pools but stagnates.", fi:"Aim for fewer than 3 zeros in a 10-digit number.", tag:"Z", sn:"-1pt"});
   }
 
   // 6. Repeating digits
@@ -489,7 +583,9 @@ function run() {
   }
 
   finalScore = nd.bs - deduct;
-  if (finalScore < 1) { finalScore = 1; }
+  var minScore = (root === 4 || root === 8) ? 1 : 2;
+  if (finalScore < minScore) { finalScore = minScore; }
+  if (finalScore > 10) { finalScore = 10; }
   sv = sVerd(finalScore);
 
   hasBad = false;
